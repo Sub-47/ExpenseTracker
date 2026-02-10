@@ -1,0 +1,48 @@
+### Test 1: Check if server is running
+GET http://localhost:5000
+
+### Test 2: Add a new expense (VALID)
+POST http://localhost:5000/api/expenses
+Content-Type: application/json
+
+{
+  "user_id": 1,
+  "amount": 50.75,
+  "category": "Food",
+  "description": "Lunch at restaurant",
+  "date": "2026-02-10"
+}
+
+### Test 3: Add another expense (without description - VALID)
+POST http://localhost:5000/api/expenses
+Content-Type: application/json
+
+{
+  "user_id": 1,
+  "amount": 25.00,
+  "category": "Transport",
+  "date": "2026-02-09"
+}
+
+
+### Test 4: Get all expenses for user 1
+GET http://localhost:5000/api/expenses/1
+
+### Test 5: Test validation - missing amount
+POST http://localhost:5000/api/expenses
+Content-Type: application/json
+
+{
+  "user_id": 1,
+  "category": "Food"
+}
+
+### Test 6: Test validation - invalid user_id
+POST http://localhost:5000/api/expenses
+Content-Type: application/json
+
+{
+  "user_id": "abc",
+  "amount": 100,
+  "category": "Shopping"
+}
