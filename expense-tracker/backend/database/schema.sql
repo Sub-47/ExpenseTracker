@@ -16,3 +16,10 @@ CREATE TABLE IF NOT EXISTS expenses(
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE users(
+    id SERIAL PRIMARY KEY,
+    email VARCHAR(20) UNIQUE NOT NULL,
+    password_hash  VARCHAR(225) NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW()
+    
+);
